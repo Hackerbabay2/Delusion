@@ -12,7 +12,7 @@ public class MoveableObject : MonoBehaviour, IInteractable
     [SerializeField] private float _distanceChangeSpeed = 2f;
     [SerializeField] private float _rotationLerpSpeed = 5f;
     [SerializeField] private float _throwForce = 15f;
-    [SerializeField] private float _springForce = 300f;
+    [SerializeField] private float _springForce = 50f;
     [SerializeField] private float _damping = 1f;
 
     private Rigidbody _rigidbody;

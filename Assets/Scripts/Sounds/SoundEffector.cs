@@ -7,6 +7,7 @@ using Zenject;
 public abstract class SoundEffector : MonoBehaviour
 {
     [Inject] private GlobalSettings _settings;
+    [Inject] private SettingStorage _storage;
 
     [Header("Sound Settings")]
     [SerializeField] protected AudioClip Sound;
@@ -32,6 +33,20 @@ public abstract class SoundEffector : MonoBehaviour
         AudioSource.maxDistance = 15f;
         AudioSource.rolloffMode = AudioRolloffMode.Logarithmic;
         AudioSource.clip = Sound;
-        Debug.Log(AudioSource.volume);
+    }
+
+    private void OnEnable()
+    {
+        _storage.OnSettingsUpdate += UpdateVolume;
+    }
+
+    private void OnDisable()
+    {
+        _storage.OnSettingsUpdate -= UpdateVolume;
+    }
+
+    private void UpdateVolume()
+    {
+        AudioSource.volume = _settings.SoundValue;
     }
 }

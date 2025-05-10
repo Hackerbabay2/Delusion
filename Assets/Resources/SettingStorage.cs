@@ -1,12 +1,16 @@
 using Storage.Scripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Events;
 using Zenject;
 
 public class SettingStorage
 {
+    public Action OnSettingsUpdate;
+
     [Inject] private GlobalSettings _globalSettings;
     private JsonToFileStorageService _jsonToFileStorageService;
     private string _path = "UserSetting";
@@ -19,6 +23,7 @@ public class SettingStorage
     public void SaveSetting()
     {
         _jsonToFileStorageService.Save(_path, _globalSettings);
+        OnSettingsUpdate?.Invoke();
     }
 
     public void LoadSetting()
@@ -30,6 +35,7 @@ public class SettingStorage
                 _globalSettings.Load(data.SoundValue);
             }
         });
+        OnSettingsUpdate?.Invoke();
     }
 
     public bool CheckForSetting()

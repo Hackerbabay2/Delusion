@@ -14,7 +14,7 @@ public class FlashlightPowerChanger : ValueChanger
 
     public void UpdateValue()
     {
-        ChangeText($"Flashlight: {_playerStats.FlashLightPower.ToString("#.##")}");
+        ChangeText($"Заряд фонарика: {_playerStats.FlashLightPower.ToString("#.##")}");
     }
 
     public override void ChangeText(string text)

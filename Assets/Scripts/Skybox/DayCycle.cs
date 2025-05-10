@@ -44,8 +44,6 @@ public class DayCycle : MonoBehaviour
 
         if (_dayMusic != null && _nightMusic != null)
         {
-            _dayMusic.volume = 0.1f;
-            _nightMusic.volume = 0f;
             _dayMusic.Play();
             _nightMusic.Play();
         }

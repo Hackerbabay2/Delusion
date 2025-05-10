@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Storage.Scripts;
 using System.IO;
+using Zenject;
 
 [Serializable]
 public class GlobalSettings

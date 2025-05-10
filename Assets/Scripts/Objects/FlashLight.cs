@@ -5,9 +5,8 @@ using UnityEngine.Experimental.GlobalIllumination;
 using Zenject;
 
 [RequireComponent(typeof(Light), typeof(AudioSource))]
-public class FlashLight : MonoBehaviour
+public class FlashLight : SoundEffector
 {
-    [SerializeField] private AudioClip _buttonSound;
     [SerializeField] private float _dischargeSpeed;
     [SerializeField] private float _dischargeValue;
 
@@ -19,13 +18,10 @@ public class FlashLight : MonoBehaviour
     private AudioSource _audioSource;
     private Coroutine _flashlightDecreasePower;
 
-    private void Awake()
+    private void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
         _light = GetComponent<Light>();
         _keyInputService = new KeyInputService();
-        _audioSource.clip = _buttonSound;
-        _audioSource.playOnAwake = false;
         _light.enabled = _enabled;
     }
 
@@ -33,7 +29,7 @@ public class FlashLight : MonoBehaviour
     {
         if (_keyInputService.IsFlashLightPressed())
         {
-            _audioSource.Play();
+            AudioSource.Play();
             _enabled = !_enabled;
             _light.enabled = _enabled;
 
@@ -58,6 +54,6 @@ public class FlashLight : MonoBehaviour
         }
         _enabled = false;
         _light.enabled = _enabled;
-        _audioSource?.Play();
+        AudioSource.Play();
     }
 }
