@@ -36,6 +36,7 @@ public class DayCycle : MonoBehaviour
     private bool _isDayMusicPlaying = true;
 
     public float TimeOfDay => _timeOfDay;
+    public float DayDuration => _dayDuration;
 
     private void Start()
     {
@@ -68,7 +69,7 @@ public class DayCycle : MonoBehaviour
         }
 
         RenderSettings.skybox.Lerp(_nightSkybox, _daySkybox, _skyboxCurve.Evaluate(_timeOfDay));
-        RenderSettings.sun = _skyboxCurve.Evaluate(_timeOfDay) > 0.1f ? _sun : _moon;
+        RenderSettings.sun = _skyboxCurve.Evaluate(_timeOfDay) > 0.1f ? _moon : _sun;
 
         float fogIntensity = _fogDensityCurve.Evaluate(_timeOfDay);
         RenderSettings.fogDensity = fogIntensity * _maxFogDensity;
@@ -125,5 +126,10 @@ public class DayCycle : MonoBehaviour
     public void SetTimeOfDay(float timeOfDay)
     {
         _timeOfDay = timeOfDay;
+    }
+
+    public void SetDuration(float duration)
+    {
+        _dayDuration = duration;
     }
 }

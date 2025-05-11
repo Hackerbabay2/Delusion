@@ -159,6 +159,15 @@ public partial class @Keybinds: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Use"",
+                    ""type"": ""Button"",
+                    ""id"": ""ad931a93-3cf6-45b8-81f5-e93a41c959ed"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -315,6 +324,17 @@ public partial class @Keybinds: IInputActionCollection2, IDisposable
                     ""action"": ""Interactive"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""92bcf1c3-9e72-45a5-a024-1e947437fe4e"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Use"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -346,6 +366,7 @@ public partial class @Keybinds: IInputActionCollection2, IDisposable
         m_CharacterMovement_SecondPerson = m_CharacterMovement.FindAction("SecondPerson", throwIfNotFound: true);
         m_CharacterMovement_ThridPerson = m_CharacterMovement.FindAction("ThridPerson", throwIfNotFound: true);
         m_CharacterMovement_Interactive = m_CharacterMovement.FindAction("Interactive", throwIfNotFound: true);
+        m_CharacterMovement_Use = m_CharacterMovement.FindAction("Use", throwIfNotFound: true);
     }
 
     ~@Keybinds()
@@ -488,6 +509,7 @@ public partial class @Keybinds: IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterMovement_SecondPerson;
     private readonly InputAction m_CharacterMovement_ThridPerson;
     private readonly InputAction m_CharacterMovement_Interactive;
+    private readonly InputAction m_CharacterMovement_Use;
     public struct CharacterMovementActions
     {
         private @Keybinds m_Wrapper;
@@ -497,6 +519,7 @@ public partial class @Keybinds: IInputActionCollection2, IDisposable
         public InputAction @SecondPerson => m_Wrapper.m_CharacterMovement_SecondPerson;
         public InputAction @ThridPerson => m_Wrapper.m_CharacterMovement_ThridPerson;
         public InputAction @Interactive => m_Wrapper.m_CharacterMovement_Interactive;
+        public InputAction @Use => m_Wrapper.m_CharacterMovement_Use;
         public InputActionMap Get() { return m_Wrapper.m_CharacterMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -521,6 +544,9 @@ public partial class @Keybinds: IInputActionCollection2, IDisposable
             @Interactive.started += instance.OnInteractive;
             @Interactive.performed += instance.OnInteractive;
             @Interactive.canceled += instance.OnInteractive;
+            @Use.started += instance.OnUse;
+            @Use.performed += instance.OnUse;
+            @Use.canceled += instance.OnUse;
         }
 
         private void UnregisterCallbacks(ICharacterMovementActions instance)
@@ -540,6 +566,9 @@ public partial class @Keybinds: IInputActionCollection2, IDisposable
             @Interactive.started -= instance.OnInteractive;
             @Interactive.performed -= instance.OnInteractive;
             @Interactive.canceled -= instance.OnInteractive;
+            @Use.started -= instance.OnUse;
+            @Use.performed -= instance.OnUse;
+            @Use.canceled -= instance.OnUse;
         }
 
         public void RemoveCallbacks(ICharacterMovementActions instance)
@@ -580,5 +609,6 @@ public partial class @Keybinds: IInputActionCollection2, IDisposable
         void OnSecondPerson(InputAction.CallbackContext context);
         void OnThridPerson(InputAction.CallbackContext context);
         void OnInteractive(InputAction.CallbackContext context);
+        void OnUse(InputAction.CallbackContext context);
     }
 }

@@ -19,7 +19,7 @@ public class InGameMenuClick : MonoBehaviour
 
     private void Update()
     {
-        if (_keyInputService.IsF1Pressed())
+        if (_keyInputService.IsMenuPressed())
         {
             _inGameMenu.SetActive(!_inGameMenu.activeSelf);
             _examplePlayer.enabled = !_inGameMenu.activeSelf;

@@ -63,6 +63,6 @@ public class MainMenuButtonClick : MonoBehaviour
 
     public void UpdateSoundVolume()
     {
-        _soundVolume.text = $"{(_slider.value * 100).ToString("#.#")}%";
+        _soundVolume.text = $"{(_slider.value * 100).ToString("00.0")}%";
     }
 }

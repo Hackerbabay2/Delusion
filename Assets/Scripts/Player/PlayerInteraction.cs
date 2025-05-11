@@ -25,6 +25,27 @@ public class PlayerInteraction : MonoBehaviour
         {
             TryInteract();
         }
+
+        if (_keyInputService.IsUsePressed())
+        {
+            TryUse();
+        }
+    }
+
+    private void TryUse()
+    {
+        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, interactionDistance))
+        {
+            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+
+            if (interactable != null)
+            {
+                interactable.Use();
+            }
+        }
     }
 
     private void TryInteract()

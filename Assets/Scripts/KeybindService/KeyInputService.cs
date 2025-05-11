@@ -10,6 +10,11 @@ public class KeyInputService
         _keybinds.Enable();
     }
 
+    public bool IsUsePressed()
+    {
+        return _keybinds.CharacterMovement.Use.triggered;
+    }
+
     public bool IsFlashLightPressed()
     {
         return _keybinds.Interface.Flashlight.triggered;
@@ -48,5 +53,10 @@ public class KeyInputService
     public bool IsF3Pressed()
     {
         return _keybinds.CharacterMovement.ThridPerson.triggered;
+    }
+
+    public bool IsMenuPressed()
+    {
+        return _keybinds.Interface.Menu.triggered;
     }
 }

@@ -25,11 +25,6 @@ public class SaveableDynamicObject : BaseStorage
         OnStorageEnable();
     }
 
-    private void OnDisable()
-    {
-        OnStorageDisable();
-    }
-
     public override void Load(SaveData saveData)
     {
         if (saveData.GetType() != typeof(DynamicData))
@@ -39,6 +34,13 @@ public class SaveableDynamicObject : BaseStorage
         }
 
         _dynamicData = saveData as DynamicData;
+
+        if (_dynamicData.IsDestroyed)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
         transform.position = _dynamicData.Position.ApplyToVector3();
         transform.rotation = _dynamicData.Rotation.ApplyToQuaterniuon();
         _rigidbody.velocity = _dynamicData.Velocity.ApplyToVector3();
@@ -50,7 +52,6 @@ public class SaveableDynamicObject : BaseStorage
 
     public override void Save()
     {
-        Debug.Log("Save start");
         _dynamicData.Position = new VectorConvertor(transform.position);
         _dynamicData.Rotation = new QuaternionConvertor(transform.rotation);
         _dynamicData.Velocity = new VectorConvertor(_rigidbody.velocity);
@@ -58,7 +59,11 @@ public class SaveableDynamicObject : BaseStorage
         _dynamicData.IsKinematic = _rigidbody.isKinematic;
         _dynamicData.PrefabID = _prefabId;
         _dynamicData.Name = gameObject.name;
-        Debug.Log("Save end");
+    }
+
+    public void SetDestroyed(bool isDestroyed = true)
+    {
+        _dynamicData.IsDestroyed = isDestroyed;
     }
 }
 
@@ -72,6 +77,7 @@ public class DynamicData : SaveData
     public bool IsKinematic;
     public string PrefabID;
     public string Name;
+    public bool IsDestroyed;
 
     public DynamicData() { }
 

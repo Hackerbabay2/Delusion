@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(Storage.Scripts.SaveableStaticObject))]
+[RequireComponent(typeof(Rigidbody))]
 public class MoveableObject : MonoBehaviour, IInteractable
 {
     public event Action<MoveableObject> OnDropped;

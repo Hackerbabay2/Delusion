@@ -4,5 +4,15 @@ using UnityEngine;
 [RequireComponent(typeof(TMP_Text))]
 public abstract class ValueChanger : MonoBehaviour
 {
-    public abstract void ChangeText(string text);
+    protected TMP_Text _text;
+
+    private void Awake()
+    {
+        _text = GetComponent<TMP_Text>();
+    }
+
+    public virtual void ChangeText(string text)
+    {
+        _text.text = text;
+    }
 }

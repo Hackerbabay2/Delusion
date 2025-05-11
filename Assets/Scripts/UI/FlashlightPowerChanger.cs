@@ -5,20 +5,8 @@ public class FlashlightPowerChanger : ValueChanger
 {
     [Inject] private PlayerStats _playerStats;
 
-    private TMP_Text _flashlightText;
-
-    private void Awake()
-    {
-        _flashlightText = GetComponent<TMP_Text>();
-    }
-
     public void UpdateValue()
     {
-        ChangeText($"Заряд фонарика: {_playerStats.FlashLightPower.ToString("#.##")}");
-    }
-
-    public override void ChangeText(string text)
-    {
-        _flashlightText.text = text;
+        ChangeText($"Заряд фонарика: {_playerStats.FlashLightPower.ToString("00.0")}");
     }
 }

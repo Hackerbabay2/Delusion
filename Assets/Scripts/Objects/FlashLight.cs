@@ -15,7 +15,6 @@ public class FlashLight : SoundEffector
     private KeyInputService _keyInputService;
     private bool _enabled = false;
     private Light _light;
-    private AudioSource _audioSource;
     private Coroutine _flashlightDecreasePower;
 
     private void Start()
