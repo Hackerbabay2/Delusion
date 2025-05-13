@@ -1,6 +1,5 @@
 using KinematicCharacterController.Examples;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -22,16 +21,26 @@ public class Bed : MonoBehaviour, IInteractable
     [Inject] private PlayerStats _playerStats;
 
     private float _savedDayDuratoin;
+    private Light _light;
+    private FlashLight _flashLight;
 
     private void Awake()
     {
         _savedDayDuratoin = _dayCycle.DayDuration;
+        _light = _camera.GetComponentInChildren<Light>();
+        _flashLight = _light.GetComponent<FlashLight>();
     }
 
     public void Interact()
     {
         if (_playerStats.Fatigue <= _canSleepValue)
         {
+            if (_light.enabled)
+            {
+                _light.enabled = false;
+                _flashLight.enabled = false;
+            }
+
             _examplePlayer.enabled = false;
             _camera.transform.position = _cameraPoint.position;
             _camera.transform.rotation = _cameraPoint.rotation;
@@ -49,6 +58,7 @@ public class Bed : MonoBehaviour, IInteractable
         }
 
         _examplePlayer.enabled = true;
+        _flashLight.enabled = true;
         _dayCycle.SetDuration(_savedDayDuratoin);
     }
 }

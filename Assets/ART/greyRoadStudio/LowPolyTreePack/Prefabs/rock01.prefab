@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 33463119321741464}
   - component: {fileID: 23847661279960470}
   - component: {fileID: 64860092164156176}
-  - component: {fileID: 5969984783386621365}
   - component: {fileID: 820782008091935689}
   m_Layer: 0
   m_Name: rock01
@@ -105,30 +104,9 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 40eee6d5f6f994c478afdb774a87c9b1, type: 3}
---- !u!65 &5969984783386621365
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1902742491923462}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.76034427, y: 0.76075333, z: 1.0297211}
-  m_Center: {x: 0.103084564, y: 0.3843176, z: -0.05121477}
 --- !u!205 &820782008091935689
 LODGroup:
   m_ObjectHideFlags: 0
@@ -151,7 +129,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 23847661279960470}
-  - screenRelativeHeight: 0.01898811
+  - screenRelativeHeight: 0.02526635
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 23847661279960470}

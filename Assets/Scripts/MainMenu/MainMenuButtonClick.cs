@@ -9,6 +9,7 @@ public class MainMenuButtonClick : MonoBehaviour
     [SerializeField] private GameObject _settingsWindow;
     [SerializeField] private Slider _slider;
     [SerializeField] private TMP_Text _soundVolume;
+    [SerializeField] private Toggle _toggle;
 
     [Inject] private SettingStorage _settingStorage;
     [Inject] private GlobalSettings _globalSettings;
@@ -46,12 +47,15 @@ public class MainMenuButtonClick : MonoBehaviour
     {
         _settingsWindow.SetActive(true);
         _slider.value = _globalSettings.SoundValue;
+        _toggle.isOn = _globalSettings.VSyncEnable;
         UpdateSoundVolume();
     }
 
     public void OnAcceptButtonClick()
     {
         _globalSettings.SoundValue = _slider.value;
+        _globalSettings.VSyncEnable = _toggle.isOn;
+        _globalSettings.UpdateVSync();
         _settingStorage.SaveSetting();
         _settingsWindow.SetActive(false);
     }

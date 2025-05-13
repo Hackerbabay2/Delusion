@@ -1,3 +1,4 @@
+using KinematicCharacterController.Examples;
 using Zenject;
 
 namespace Storage.Scripts
@@ -11,6 +12,7 @@ namespace Storage.Scripts
             Container.Bind<DayEventService>().FromComponentInHierarchy().AsSingle();
             Container.Bind<DayCycle>().FromComponentInHierarchy().AsSingle();
             Container.Bind<PlayerStats>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<ExamplePlayer>().FromComponentInHierarchy().AsSingle();
         }
     }
 }

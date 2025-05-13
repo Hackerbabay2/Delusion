@@ -9,7 +9,9 @@ public class ElectricalPanel : MonoBehaviour
     [SerializeField] private List<Transform> _slots = new List<Transform>();
     [SerializeField] protected UnityEvent _onSlotsComplete;
 
-    private const int NeedBattery = 3;
+    private bool _isRepaired = false;
+    
+    public bool IsRepaired => _isRepaired;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -31,6 +33,7 @@ public class ElectricalPanel : MonoBehaviour
             if (_slots.Find(slot => slot.gameObject.transform.childCount == 0) == null)
             {
                 _onSlotsComplete?.Invoke();
+                _isRepaired = true;
             }
         }
     }

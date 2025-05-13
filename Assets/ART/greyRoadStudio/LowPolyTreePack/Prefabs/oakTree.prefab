@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4912536897705504}
   - component: {fileID: 33989385991057262}
   - component: {fileID: 23890990353640460}
-  - component: {fileID: 64004332394335928}
   - component: {fileID: 2849845581383658008}
   - component: {fileID: 644489042959358502}
   m_Layer: 0
@@ -87,28 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64004332394335928
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377331622712542}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ccafc2ea8bec52841ac2b9fd34238310, type: 3}
 --- !u!205 &2849845581383658008
 LODGroup:
   m_ObjectHideFlags: 0
@@ -131,7 +108,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 23890990353640460}
-  - screenRelativeHeight: 0.020985732
+  - screenRelativeHeight: 0.031152202
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 23890990353640460}
@@ -155,5 +132,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.007285, y: 5.154873, z: 1.9521502}
-  m_Center: {x: 0.15918207, y: 2.5774364, z: 0.044274032}
+  m_Size: {x: 1.1444029, y: 4.647842, z: 1.1155556}
+  m_Center: {x: 0.19027519, y: 2.323921, z: 0.025613388}

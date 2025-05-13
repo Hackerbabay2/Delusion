@@ -32,7 +32,7 @@ public class SettingStorage
         {
             if (data != null)
             {
-                _globalSettings.Load(data.SoundValue);
+                _globalSettings.Load(data.SoundValue, data.VSyncEnable);
             }
         });
         OnSettingsUpdate?.Invoke();

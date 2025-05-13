@@ -74,7 +74,6 @@ public class Fatigue : MonoBehaviour
         {
             if (madEvent.GameObject.activeSelf == false && madEvent.OnValueStart >= _playerStats.Fatigue)
             {
-                Debug.Log($"{madEvent.OnValueStart} : {_playerStats.Fatigue}");
                 madEvent.SetActiveObject(true);
             }
             else if(madEvent.GameObject.activeSelf == true && madEvent.OnValueStart < _playerStats.Fatigue)
