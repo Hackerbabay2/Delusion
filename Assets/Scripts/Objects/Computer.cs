@@ -3,6 +3,7 @@ using UnityEngine;
 public class Computer : MonoBehaviour, IInteractable
 {
     [SerializeField] private GameObject _computerWindow;
+    [SerializeField] private InGameMenuClick _inGameClick;
 
     public void Interact()
     {
@@ -12,5 +13,6 @@ public class Computer : MonoBehaviour, IInteractable
     public virtual void Use()
     {
         _computerWindow.SetActive(true);
+        _inGameClick.enabled = false;
     }
 }

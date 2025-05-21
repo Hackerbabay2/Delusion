@@ -9,6 +9,7 @@ public class DesktopButtonClicker : MonoBehaviour
     [Inject] private ExamplePlayer _examplePlayer;
 
     [SerializeField] private GameObject _sosWindow;
+    [SerializeField] private InGameMenuClick _inGameMenuClick;
 
     private KeyInputService _inputService;
 
@@ -21,6 +22,7 @@ public class DesktopButtonClicker : MonoBehaviour
     {
         _examplePlayer.enabled = false;
         Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 
     private void OnDisable()
@@ -32,8 +34,18 @@ public class DesktopButtonClicker : MonoBehaviour
     {
         if(_inputService.IsMenuPressed())
         {
-            gameObject.SetActive(false);
+            StartCoroutine(DisableComputer());
         }
+    }
+
+    private IEnumerator DisableComputer()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        yield return new WaitForEndOfFrame();
+        _inGameMenuClick.enabled = true;
+        yield return new WaitForEndOfFrame();
+        gameObject.SetActive(false);
     }
 
     public void OnSOSButtonClick()

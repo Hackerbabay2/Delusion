@@ -1,4 +1,5 @@
 using KinematicCharacterController.Examples;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -6,6 +7,7 @@ using Zenject;
 public class LetterTextChanger : MonoBehaviour
 {
     [SerializeField] private TMP_Text _letterText;
+    [SerializeField] protected InGameMenuClick _inGameMenuClick;
 
     [Inject] private ExamplePlayer _player;
 
@@ -25,16 +27,23 @@ public class LetterTextChanger : MonoBehaviour
     {
         if (_keyInputService.IsMenuPressed())
         {
-            _player.enabled = true;
-            Cursor.lockState = CursorLockMode.Locked;
-            gameObject.SetActive(false);
+            StartCoroutine(CloseLetter());
         }
+    }
+
+    private IEnumerator CloseLetter()
+    {
+        _player.enabled = true;
+        yield return new WaitForEndOfFrame();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        yield return new WaitForEndOfFrame();
+        _inGameMenuClick.enabled = true;
+        gameObject.SetActive(false);
     }
 
     public void OnCloseButtonClick()
     {
-        _player.enabled = true;
-        Cursor.lockState = CursorLockMode.Locked;
-        gameObject.SetActive(false);
+        StartCoroutine(CloseLetter());
     }
 }

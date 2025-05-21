@@ -42,7 +42,7 @@ public class SOSWindow : MonoBehaviour
 
     public void OnCloseSOSWindowClick()
     {
-        gameObject.SetActive(false);
+        gameObject.SetActive(false);    
     }
 
     private IEnumerator SendSignal()

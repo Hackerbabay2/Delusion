@@ -9,6 +9,7 @@ public class Letter : MonoBehaviour, IInteractable
     [SerializeField] [TextArea(10,20)] private string _text;
     [SerializeField] private GameObject _letterPanel;
     [SerializeField] private LetterTextChanger _textChanger;
+    [SerializeField] private InGameMenuClick _inGameMenuClick;
 
     [Inject] private ExamplePlayer _player;
 
@@ -27,8 +28,10 @@ public class Letter : MonoBehaviour, IInteractable
     public virtual void Use()
     {
         _player.enabled = false;
+        _inGameMenuClick.enabled = false;
         _letterPanel.SetActive(true);
         _textChanger.ChangeText(_text);
         Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 }

@@ -9,7 +9,6 @@ public class InGameMenuClick : MonoBehaviour
 
     [SerializeField] private GameObject _inGameMenu;
     [SerializeField] private ExamplePlayer _examplePlayer;
-
     private KeyInputService _keyInputService;
 
     private void Awake()

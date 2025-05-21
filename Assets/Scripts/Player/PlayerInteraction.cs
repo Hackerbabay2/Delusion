@@ -12,7 +12,7 @@ public class PlayerInteraction : MonoBehaviour
     private KeyInputService _keyInputService;
     private MoveableObject _currentHeldObject;
 
-    [Inject] private DiContainer _container;
+    private Ray _ray;
 
     private void Awake()
     {
