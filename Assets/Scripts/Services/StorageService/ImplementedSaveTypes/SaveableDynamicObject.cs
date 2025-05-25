@@ -40,8 +40,12 @@ public class SaveableDynamicObject : BaseStorage
             gameObject.SetActive(false);
             return;
         }
+        else
+        {
+            gameObject.SetActive(true);
+        }
 
-        transform.position = _dynamicData.Position.ApplyToVector3();
+            transform.position = _dynamicData.Position.ApplyToVector3();
         transform.rotation = _dynamicData.Rotation.ApplyToQuaterniuon();
         _rigidbody.velocity = _dynamicData.Velocity.ApplyToVector3();
         _rigidbody.angularVelocity = _dynamicData.AngularVelocity.ApplyToVector3();

@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DeathScreen.unity
     guid: 83e90c443c178de4d82ba694d846f0b7
+  - enabled: 1
+    path: Assets/Scenes/BadEnding.unity
+    guid: 7bf8ade509929b84ea008e273ad748e8
+  - enabled: 1
+    path: Assets/Scenes/GoodEnding.unity
+    guid: e475c8b33535fc54bb9dde4cdf6157ca
+  - enabled: 0
+    path: Assets/Scenes/BackgroundScene.unity
+    guid: e4f217b8e58a88744991383561efc060
   m_configObjects: {}

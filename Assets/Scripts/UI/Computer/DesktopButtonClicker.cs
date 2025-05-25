@@ -28,7 +28,8 @@ public class DesktopButtonClicker : MonoBehaviour
     private void OnDisable()
     {
         _examplePlayer.enabled = true;
-        _keyInputService.Dispose();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()

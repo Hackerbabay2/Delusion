@@ -15,11 +15,6 @@ public class FlashLight : SoundEffector
     private Light _light;
     private Coroutine _flashlightDecreasePower;
 
-    private void OnDisable()
-    {
-        _keyInputService.Dispose();
-    }
-
     private void Start()
     {
         _light = GetComponent<Light>();

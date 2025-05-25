@@ -23,6 +23,7 @@ public class StorageService : MonoBehaviour
     private KeyInputService _keyInputService;
     private GameData _gameData;
     private bool _isLoad;
+    private bool _canSave = true;
 
     private Dictionary<string, GameObject> _prefabDictionary;
     private readonly List<BaseStorage> _seveables = new List<BaseStorage>();
@@ -57,11 +58,6 @@ public class StorageService : MonoBehaviour
                 Debug.LogError($"Prefab {prefab.name} doesn't have SaveableDynamicObject component");
             }
         }
-    }
-    
-    private void OnDisable()
-    {
-        _keyInputService.Dispose();
     }
 
     private void Start()
@@ -98,18 +94,29 @@ public class StorageService : MonoBehaviour
         _seveables.Remove(saveable);
     }
 
+    public void SetCanSave(bool canSave)
+    {
+        _canSave = canSave;
+    }
+
     public IEnumerator SaveGame()
     {
-        _onSaveComplete?.Invoke();
-
-        foreach (var saveable in _seveables)
+        if (_canSave == false)
         {
-            saveable.InitData(saveable.SaveDataValue);
-            yield return null;
+            Debug.Log("Нельзя сохранится");
         }
+        else
+        {
+            foreach (var saveable in _seveables)
+            {
+                saveable.InitData(saveable.SaveDataValue);
+                yield return null;
+            }
 
-        _storageService.Save(GetKey(), _gameData);
-        Debug.Log("Save complete");
+            _storageService.Save(GetKey(), _gameData);
+            _onSaveComplete?.Invoke();
+            Debug.Log("Save complete");
+        }
     }
 
     public IEnumerator LoadGame()

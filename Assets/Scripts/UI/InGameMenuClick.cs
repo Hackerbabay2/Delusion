@@ -13,12 +13,7 @@ public class InGameMenuClick : MonoBehaviour
 
     private void Awake()
     {
-        _keyInputService = new();
-    }
-
-    private void OnDisable()
-    {
-        _keyInputService.Dispose();
+        _keyInputService = new KeyInputService();
     }
 
     private void Update()

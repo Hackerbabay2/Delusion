@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class KeyInputService : IDisposable
+public class KeyInputService
 {
     private Keybinds _keybinds;
 
@@ -11,11 +11,24 @@ public class KeyInputService : IDisposable
         _keybinds.Enable();
     }
 
-    public void Dispose()
+    public bool IsMinusPressed()
     {
-        _keybinds?.Disable();
-        _keybinds?.Dispose();
-        _keybinds = null;
+        return _keybinds.CharacterMovement.Minus.triggered;
+    }
+
+    public bool IsPlusPressed()
+    {
+        return _keybinds.CharacterMovement.Plus.triggered;
+    }
+
+    public bool IsKPressed()
+    {
+        return _keybinds.CharacterMovement.K.triggered;
+    }
+
+    public bool IsF8Pressed()
+    {
+        return _keybinds.CharacterMovement.F8.triggered;
     }
 
     public bool IsUsePressed()

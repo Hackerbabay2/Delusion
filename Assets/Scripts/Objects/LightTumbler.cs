@@ -8,6 +8,8 @@ public class LightTumbler : SoundEffector, IInteractable
     [SerializeField] private float _rotationAngle = 10f;
     [SerializeField] private float _rotationDuration = 0.3f;
 
+    public bool LightEnabled => _light.enabled;
+
     private void Start()
     {
         RotateButton();
@@ -18,6 +20,12 @@ public class LightTumbler : SoundEffector, IInteractable
         _light.enabled = !_light.enabled;
         RotateButton();
         AudioSource.Play();
+    }
+
+    public void SetState(bool lightEnabled)
+    {
+        _light.enabled = lightEnabled;
+        RotateButton();
     }
 
     private void RotateButton()

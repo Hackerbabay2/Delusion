@@ -14,6 +14,8 @@ public class SOSWindow : MonoBehaviour
 
     private bool _isSignalSent = false;
 
+    public bool IsSignalSent => _isSignalSent;
+
     private void OnEnable()
     {
         if (_electricalPanel.IsTurn)
@@ -24,6 +26,18 @@ public class SOSWindow : MonoBehaviour
         {
             AddLog("Нет соединения...\n");
         }
+    }
+
+    private void OnDisable()
+    {
+        _isSignalSent = false;
+        _sosField.text = string.Empty;
+    }
+
+    public void SetSignalSet(bool signalSet)
+    {
+        _sosField.text = string.Empty;
+        _isSignalSent = signalSet;
     }
 
     public void OnSendSOSSignalButtonClick()

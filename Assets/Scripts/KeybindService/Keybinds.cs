@@ -168,6 +168,42 @@ public partial class @Keybinds: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""F8"",
+                    ""type"": ""Button"",
+                    ""id"": ""db1062ad-6952-4de3-b46e-53138447bf50"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""K"",
+                    ""type"": ""Button"",
+                    ""id"": ""60335d48-9052-44f4-af92-c01a8811326a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Minus"",
+                    ""type"": ""Button"",
+                    ""id"": ""2f1e29db-e85e-4f66-8759-1f39e34fc2ed"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Plus"",
+                    ""type"": ""Button"",
+                    ""id"": ""e085bd99-efe8-4dd1-9fdb-86685a96e2c2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -335,6 +371,50 @@ public partial class @Keybinds: IInputActionCollection2, IDisposable
                     ""action"": ""Use"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9adba57e-f272-4d01-bc0c-43d708df754a"",
+                    ""path"": ""<Keyboard>/f8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""F8"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1db444d8-4d29-4560-b91f-8c3e85c4d668"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""K"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5cfe6149-89e1-4756-a08b-c788e7302782"",
+                    ""path"": ""<Keyboard>/minus"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Minus"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a1d97a6-5107-4a1a-873a-db8de4b50687"",
+                    ""path"": ""<Keyboard>/equals"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Plus"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -367,6 +447,10 @@ public partial class @Keybinds: IInputActionCollection2, IDisposable
         m_CharacterMovement_ThridPerson = m_CharacterMovement.FindAction("ThridPerson", throwIfNotFound: true);
         m_CharacterMovement_Interactive = m_CharacterMovement.FindAction("Interactive", throwIfNotFound: true);
         m_CharacterMovement_Use = m_CharacterMovement.FindAction("Use", throwIfNotFound: true);
+        m_CharacterMovement_F8 = m_CharacterMovement.FindAction("F8", throwIfNotFound: true);
+        m_CharacterMovement_K = m_CharacterMovement.FindAction("K", throwIfNotFound: true);
+        m_CharacterMovement_Minus = m_CharacterMovement.FindAction("Minus", throwIfNotFound: true);
+        m_CharacterMovement_Plus = m_CharacterMovement.FindAction("Plus", throwIfNotFound: true);
     }
 
     ~@Keybinds()
@@ -510,6 +594,10 @@ public partial class @Keybinds: IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterMovement_ThridPerson;
     private readonly InputAction m_CharacterMovement_Interactive;
     private readonly InputAction m_CharacterMovement_Use;
+    private readonly InputAction m_CharacterMovement_F8;
+    private readonly InputAction m_CharacterMovement_K;
+    private readonly InputAction m_CharacterMovement_Minus;
+    private readonly InputAction m_CharacterMovement_Plus;
     public struct CharacterMovementActions
     {
         private @Keybinds m_Wrapper;
@@ -520,6 +608,10 @@ public partial class @Keybinds: IInputActionCollection2, IDisposable
         public InputAction @ThridPerson => m_Wrapper.m_CharacterMovement_ThridPerson;
         public InputAction @Interactive => m_Wrapper.m_CharacterMovement_Interactive;
         public InputAction @Use => m_Wrapper.m_CharacterMovement_Use;
+        public InputAction @F8 => m_Wrapper.m_CharacterMovement_F8;
+        public InputAction @K => m_Wrapper.m_CharacterMovement_K;
+        public InputAction @Minus => m_Wrapper.m_CharacterMovement_Minus;
+        public InputAction @Plus => m_Wrapper.m_CharacterMovement_Plus;
         public InputActionMap Get() { return m_Wrapper.m_CharacterMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -547,6 +639,18 @@ public partial class @Keybinds: IInputActionCollection2, IDisposable
             @Use.started += instance.OnUse;
             @Use.performed += instance.OnUse;
             @Use.canceled += instance.OnUse;
+            @F8.started += instance.OnF8;
+            @F8.performed += instance.OnF8;
+            @F8.canceled += instance.OnF8;
+            @K.started += instance.OnK;
+            @K.performed += instance.OnK;
+            @K.canceled += instance.OnK;
+            @Minus.started += instance.OnMinus;
+            @Minus.performed += instance.OnMinus;
+            @Minus.canceled += instance.OnMinus;
+            @Plus.started += instance.OnPlus;
+            @Plus.performed += instance.OnPlus;
+            @Plus.canceled += instance.OnPlus;
         }
 
         private void UnregisterCallbacks(ICharacterMovementActions instance)
@@ -569,6 +673,18 @@ public partial class @Keybinds: IInputActionCollection2, IDisposable
             @Use.started -= instance.OnUse;
             @Use.performed -= instance.OnUse;
             @Use.canceled -= instance.OnUse;
+            @F8.started -= instance.OnF8;
+            @F8.performed -= instance.OnF8;
+            @F8.canceled -= instance.OnF8;
+            @K.started -= instance.OnK;
+            @K.performed -= instance.OnK;
+            @K.canceled -= instance.OnK;
+            @Minus.started -= instance.OnMinus;
+            @Minus.performed -= instance.OnMinus;
+            @Minus.canceled -= instance.OnMinus;
+            @Plus.started -= instance.OnPlus;
+            @Plus.performed -= instance.OnPlus;
+            @Plus.canceled -= instance.OnPlus;
         }
 
         public void RemoveCallbacks(ICharacterMovementActions instance)
@@ -610,5 +726,9 @@ public partial class @Keybinds: IInputActionCollection2, IDisposable
         void OnThridPerson(InputAction.CallbackContext context);
         void OnInteractive(InputAction.CallbackContext context);
         void OnUse(InputAction.CallbackContext context);
+        void OnF8(InputAction.CallbackContext context);
+        void OnK(InputAction.CallbackContext context);
+        void OnMinus(InputAction.CallbackContext context);
+        void OnPlus(InputAction.CallbackContext context);
     }
 }
