@@ -1,13 +1,21 @@
+using System;
 using UnityEngine;
 
-public class KeyInputService
+public class KeyInputService : IDisposable
 {
     private Keybinds _keybinds;
-    
+
     public KeyInputService()
     {
         _keybinds = new Keybinds();
         _keybinds.Enable();
+    }
+
+    public void Dispose()
+    {
+        _keybinds?.Disable();
+        _keybinds?.Dispose();
+        _keybinds = null;
     }
 
     public bool IsUsePressed()
@@ -34,7 +42,7 @@ public class KeyInputService
     {
         return _keybinds.CharacterMovement.Interactive.triggered;
     }
-    
+
     public Vector2 GetMovementVector()
     {
         return _keybinds.CharacterMovement.Movement.ReadValue<Vector2>();
@@ -44,12 +52,12 @@ public class KeyInputService
     {
         return _keybinds.CharacterMovement.FirstPerson.triggered;
     }
-    
+
     public bool IsF2Pressed()
     {
         return _keybinds.CharacterMovement.SecondPerson.triggered;
     }
-    
+
     public bool IsF3Pressed()
     {
         return _keybinds.CharacterMovement.ThridPerson.triggered;

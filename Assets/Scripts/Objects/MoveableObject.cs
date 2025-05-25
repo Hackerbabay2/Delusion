@@ -29,7 +29,6 @@ public class MoveableObject : MonoBehaviour, IInteractable
     private float _originalDrag;
     private float _originalAngularDrag;
     private bool _isRotating = false;
-    private Vector2 _lastMousePosition;
 
     private void Awake()
     {

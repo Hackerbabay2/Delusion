@@ -34,6 +34,7 @@ public class StorageService : MonoBehaviour
 
     public int LoadProgress => _loadProgress;
 
+
     private void Awake()
     {
         _keyInputService = new KeyInputService();
@@ -56,6 +57,11 @@ public class StorageService : MonoBehaviour
                 Debug.LogError($"Prefab {prefab.name} doesn't have SaveableDynamicObject component");
             }
         }
+    }
+    
+    private void OnDisable()
+    {
+        _keyInputService.Dispose();
     }
 
     private void Start()

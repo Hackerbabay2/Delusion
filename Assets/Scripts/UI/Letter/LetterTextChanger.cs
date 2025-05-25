@@ -18,6 +18,11 @@ public class LetterTextChanger : MonoBehaviour
         _keyInputService = new KeyInputService();
     }
 
+    private void OnDisable()
+    {
+        _keyInputService.Dispose();
+    }
+
     public void ChangeText(string text)
     {
         _letterText.text = text;

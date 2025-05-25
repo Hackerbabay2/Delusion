@@ -16,7 +16,7 @@ public class SOSWindow : MonoBehaviour
 
     private void OnEnable()
     {
-        if (_electricalPanel.IsRepaired)
+        if (_electricalPanel.IsTurn)
         {
             AddLog("Подключено!\n");
         }
@@ -28,7 +28,7 @@ public class SOSWindow : MonoBehaviour
 
     public void OnSendSOSSignalButtonClick()
     {
-        if (_electricalPanel.IsRepaired && _isSignalSent == false)
+        if (_electricalPanel.IsTurn && _isSignalSent == false)
         {
             StartCoroutine(SendSignal());
             _isSignalSent = true;

@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
 using Zenject;
 
 [RequireComponent(typeof(Light), typeof(AudioSource))]
@@ -16,6 +14,11 @@ public class FlashLight : SoundEffector
     private bool _enabled = false;
     private Light _light;
     private Coroutine _flashlightDecreasePower;
+
+    private void OnDisable()
+    {
+        _keyInputService.Dispose();
+    }
 
     private void Start()
     {

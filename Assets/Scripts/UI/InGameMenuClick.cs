@@ -16,6 +16,11 @@ public class InGameMenuClick : MonoBehaviour
         _keyInputService = new();
     }
 
+    private void OnDisable()
+    {
+        _keyInputService.Dispose();
+    }
+
     private void Update()
     {
         if (_keyInputService.IsMenuPressed())

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 public class Fatigue : MonoBehaviour
@@ -34,7 +35,13 @@ public class Fatigue : MonoBehaviour
         if (_playerStats.Fatigue <= 0)
         {
             StopCoroutine(_fatigueDecrease);
+            KillPlayer();
         }
+    }
+
+    private void KillPlayer()
+    {
+        SceneManager.LoadScene("DeathScreen");
     }
 
     private IEnumerator DecreaseFatigue()

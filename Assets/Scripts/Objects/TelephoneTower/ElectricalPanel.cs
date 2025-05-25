@@ -10,8 +10,10 @@ public class ElectricalPanel : MonoBehaviour
     [SerializeField] protected UnityEvent _onSlotsComplete;
 
     private bool _isRepaired = false;
-    
+    private bool _turn = false;
+
     public bool IsRepaired => _isRepaired;
+    public bool IsTurn => _turn;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -36,5 +38,10 @@ public class ElectricalPanel : MonoBehaviour
                 _isRepaired = true;
             }
         }
+    }
+
+    public void TurnTower()
+    {
+        _turn = !_turn;
     }
 }

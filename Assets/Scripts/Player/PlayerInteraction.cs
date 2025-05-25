@@ -1,7 +1,4 @@
-using System;
-using System.ComponentModel;
 using UnityEngine;
-using Zenject;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -12,11 +9,14 @@ public class PlayerInteraction : MonoBehaviour
     private KeyInputService _keyInputService;
     private MoveableObject _currentHeldObject;
 
-    private Ray _ray;
-
     private void Awake()
     {
         _keyInputService = new KeyInputService();
+    }
+
+    private void OnDisable()
+    {
+        _keyInputService.Dispose();
     }
 
     private void Update()

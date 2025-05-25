@@ -11,11 +11,11 @@ public class DesktopButtonClicker : MonoBehaviour
     [SerializeField] private GameObject _sosWindow;
     [SerializeField] private InGameMenuClick _inGameMenuClick;
 
-    private KeyInputService _inputService;
+    private KeyInputService _keyInputService;
 
     private void Awake()
     {
-        _inputService = new KeyInputService();
+        _keyInputService = new KeyInputService();
     }
 
     private void OnEnable()
@@ -28,11 +28,12 @@ public class DesktopButtonClicker : MonoBehaviour
     private void OnDisable()
     {
         _examplePlayer.enabled = true;
+        _keyInputService.Dispose();
     }
 
     private void Update()
     {
-        if(_inputService.IsMenuPressed())
+        if(_keyInputService.IsMenuPressed())
         {
             StartCoroutine(DisableComputer());
         }
