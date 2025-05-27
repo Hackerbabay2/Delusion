@@ -105,7 +105,7 @@ Material:
     - _SrcBlend: 1
     - _SunDisk: 2
     - _SunSize: 0.04
-    - _SunSizeConvergence: 1.4
+    - _SunSizeConvergence: 4.48
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:

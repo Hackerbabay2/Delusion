@@ -296,6 +296,7 @@ GameObject:
   - component: {fileID: 2298233357549415628}
   - component: {fileID: 2464634225755048975}
   - component: {fileID: 5474529089654264902}
+  - component: {fileID: 2178323951599556360}
   m_Layer: 0
   m_Name: DoorRoot
   m_TagString: Untagged
@@ -353,6 +354,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c95e3fb7be7054e9904c57bea4c3d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Sound: {fileID: 0}
+  MinPitch: 0.9
+  MaxPitch: 1.1
+  MinVolume: 0.1
+  MaxVolume: 1
   _openAngle: 90
   _duration: 0.5
   _closeDoorClips:
@@ -494,3 +500,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2178323951599556360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5789185043699306749}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 8
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

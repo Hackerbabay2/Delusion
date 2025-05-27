@@ -24,7 +24,7 @@ public class FlashLight : SoundEffector
 
     private void Update()
     {
-        if (_keyInputService.IsFlashLightPressed())
+        if (_keyInputService.IsFlashLightPressed() && _playerStats.FlashLightPower > 0)
         {
             AudioSource.Play();
             _enabled = !_enabled;

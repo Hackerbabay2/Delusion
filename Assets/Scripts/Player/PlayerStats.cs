@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
-using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -49,7 +48,7 @@ public class PlayerStats : MonoBehaviour
         _onFatigueValueUpdate?.Invoke();
     }
 
-    internal void IncreaseFatigue(float value)
+    public void IncreaseFatigue(float value)
     {
         _fatigue += value;
 
@@ -59,5 +58,13 @@ public class PlayerStats : MonoBehaviour
         }
 
         _onFatigueValueUpdate?.Invoke();
+    }
+
+    public void SetStats(float fatigue, float flashLightPower)
+    {
+        _fatigue = fatigue;
+        _flashLightPower = flashLightPower;
+        _onFatigueValueUpdate?.Invoke();
+        _onValueUpdateFlashlightPower?.Invoke();
     }
 }

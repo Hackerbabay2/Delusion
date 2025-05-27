@@ -1,11 +1,15 @@
 using KinematicCharacterController.Examples;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
 public class DesktopButtonClicker : MonoBehaviour
 {
+    [SerializeField] private DayCycle _dayCycle;
+    [SerializeField] private TMP_Text _timeText;
+
     [Inject] private ExamplePlayer _examplePlayer;
 
     [SerializeField] private GameObject _sosWindow;
@@ -38,6 +42,8 @@ public class DesktopButtonClicker : MonoBehaviour
         {
             StartCoroutine(DisableComputer());
         }
+
+        _timeText.text = _dayCycle.GetCurrentTimeFormatted();
     }
 
     private IEnumerator DisableComputer()

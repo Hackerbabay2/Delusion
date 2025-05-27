@@ -9,6 +9,8 @@ public class PlayerInteraction : MonoBehaviour
     private KeyInputService _keyInputService;
     private MoveableObject _currentHeldObject;
 
+    private Outline _outline;
+
     private void Awake()
     {
         _keyInputService = new KeyInputService();
@@ -24,6 +26,35 @@ public class PlayerInteraction : MonoBehaviour
         if (_keyInputService.IsUsePressed())
         {
             TryUse();
+        }
+
+        OutlineInterectiveObject();
+    }
+
+    private void OutlineInterectiveObject()
+    {
+        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
+        bool isHit = Physics.Raycast(ray, out hit, interactionDistance);
+
+        if (isHit)
+        {
+            if (hit.transform.TryGetComponent(out Outline outline))
+            {
+                if (_outline != null && _outline != outline)
+                {
+                    _outline.enabled = false;
+                }
+                outline.enabled = true;
+                _outline = outline;
+            }
+        }
+        else
+        {
+            if (_outline != null)
+            {
+                _outline.enabled = false;
+            }
         }
     }
 

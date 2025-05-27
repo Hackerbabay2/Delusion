@@ -277,6 +277,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 621e1bc62095ffa4f94126c72a458edf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4861396080741850542}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 621e1bc62095ffa4f94126c72a458edf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 229433504748019988}
   m_SourcePrefab: {fileID: 100100000, guid: 621e1bc62095ffa4f94126c72a458edf, type: 3}
 --- !u!1 &353740176509651357 stripped
 GameObject:
@@ -447,6 +450,7 @@ MonoBehaviour:
     \u043F\u043E\u043C\u043E\u0449\u044C?"
   _letterPanel: {fileID: 0}
   _textChanger: {fileID: 0}
+  _inGameMenuClick: {fileID: 0}
 --- !u!114 &8601985343893852159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,6 +504,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.02, y: 0.019999998, z: 0.019999998}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &229433504748019988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353740176509651357}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 8
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &1126863613233206055 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 621e1bc62095ffa4f94126c72a458edf, type: 3}
